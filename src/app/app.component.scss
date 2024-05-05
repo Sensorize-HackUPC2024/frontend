@@ -1,0 +1,80 @@
+.app-header {
+  background-color: var(--bs-primary); /* Color principal */
+  color: var(--bs-white); /* Texto en color blanco */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo img {
+    max-width: 100px; /* Tamaño máximo del logo */
+    height: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--bs-white); /* Enlaces en color blanco */
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--bs-gray-200); /* Cambiar color al pasar el ratón */
+  }
+
+  /* Media query para dispositivos móviles */
+  .menu-toggle {
+    display: none; /* Ocultar el botón de menú en pantallas más grandes */
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      display: none; /* Ocultar enlaces en dispositivos móviles */
+      flex-direction: column; /* Mostrar enlaces en columna */
+      background-color: var(--bs-dark); /* Fondo oscuro */
+      position: fixed; /* Usar fixed en lugar de absolute para llenar todo el viewport lateralmente */
+      top: 0; /* Alinear al tope del viewport */
+      left: 0; /* Alinear a la izquierda para un menú lateral */
+      height: 100%; /* Altura completa */
+      width: 75%; /* Ancho del menú, puedes ajustar esto según tus necesidades */
+      padding: 20px; /* Espaciado interior */
+      box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+      z-index: 1000; /* Asegurar que el menú esté sobre otros elementos */
+      transition: transform 0.3s ease; /* Animación de transición */
+      transform: translateX(-100%); /* Ocultar el menú moviéndolo a la izquierda */
+    }
+  
+    .nav-links.active {
+      display: flex; /* Asegura que el menú se muestre */
+      transform: translateX(0); /* Mueve el menú a su posición visible */
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-links a {
+      display: block; /* Hace que el enlace ocupe todo el ancho del contenedor, facilitando el clic */
+      color: var(--bs-white); /* Color del texto */
+      text-decoration: none; /* Elimina el subrayado de los enlaces */
+      padding: 10px 20px; /* Añade más espacio alrededor del texto */
+      margin: 10px 0; /* Espacio vertical entre enlaces */
+      font-weight: bold; /* Texto en negrita */
+      text-align: left; /* Alineación del texto a la izquierda */
+      transition: color 0.3s ease; /* Transición suave del color al interactuar */
+    }
+    
+    .nav-links a:hover {
+        color: var(--bs-gray-200); /* Cambiar color al pasar el ratón */
+        background-color: var(--bs-dark-light); /* Opcional: añadir un fondo al pasar el ratón */
+    }
+    
+  }
+  
+}
