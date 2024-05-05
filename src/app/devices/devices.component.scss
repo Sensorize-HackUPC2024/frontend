@@ -123,13 +123,15 @@
 .party-button {
   cursor: pointer;
   border-radius: var(--bs-border-radius-lg);
-  background-color: var(--bs-light);
+  background-color: #c00000;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   padding: 10px;
   justify-content: center;
+  font-weight: bold;
+  color: white;
 }
 
 .tooltip-text {
