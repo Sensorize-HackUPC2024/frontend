@@ -6,7 +6,7 @@
   margin: 20px;
 
   .sensor-panel {
-    width: 300px;
+    width: 280px;
     margin-bottom: 20px;
     background-color: var(--bs-light);
     border-radius: var(--bs-border-radius-lg);
@@ -14,7 +14,7 @@
   }
 
   .action-panel {
-    width: 300px;
+    width: 280px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -84,9 +84,31 @@
     background-color: var(--bs-warning); /* Amarillo activo */
   }
 
-  .party.active {
-    background-color: var(--bs-success); /* Verde activo */
+  .acces.active {
+    background-color: var(--bs-success); /* Amarillo activo */;
   }
+
+    /* Estilos para pantallas mayores */
+  .special-sensor-panel, .special-action-panel {
+    width: 540px; /* Estilo base */
+  }
+  
+  .special-iframe {
+    width: 510px;
+    height: 200px;
+  }
+  
+  @media (max-width: 768px) {
+    .special-sensor-panel, .special-action-panel {
+      width: 300px; /* Estilos para móviles */
+    }
+  
+    .special-iframe {
+      width: 300px; /* Ajustar el iframe también */
+      height: 150px;
+    }
+  } 
+
 }
 
 .container {
@@ -94,3 +116,44 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+:host {
+  background-color: var(--party-color);
+}
+.party-button {
+  cursor: pointer;
+  border-radius: var(--bs-border-radius-lg);
+  background-color: var(--bs-light);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 160px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%; /* Posiciona debajo del botón */
+  left: 50%;
+  transform: translateX(-50%); /* Centra el tooltip correctamente */
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.party-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.party.active {
+  background-color: var(--bs-info);
+}
+

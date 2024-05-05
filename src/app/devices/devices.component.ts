@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding, ChangeDetectorRef } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
@@ -20,7 +20,11 @@ export class DevicesComponent implements OnInit {
   heatOn: boolean = false;
   lightsOn: boolean = false;
   partyOn: boolean = false;
-  constructor(private actuatorService: ActuatorsService) {}
+  accesOn: boolean = false;
+
+  @HostBinding('style.backgroundColor') partyColor: string = 'transparent';
+
+  constructor(private actuatorService: ActuatorsService, private cdr: ChangeDetectorRef ) {}
 
   ngOnInit() {
     
@@ -83,11 +87,36 @@ export class DevicesComponent implements OnInit {
     });
   }
 
+  onAccesClick() {
+    let accesState = 0;
+    if (this.accesOn) {
+      accesState = 0;
+      this.accesOn = false;
+    } else {
+      accesState = 1;
+      this.accesOn = true;
+    }
+    this.actuatorService.actuate('door_unlock', 1, accesState).subscribe({
+      next: (response) => {
+        console.log('Acces', response);
+      },
+      error: (error) => {
+        console.error('Error starting acces:', error);
+      }
+    });
+    setTimeout(() => {
+      this.accesOn = false;
+      this.cdr.detectChanges();
+    }, 3000);
+
+  }
+
   onPartyClick() {
     let partyState = 0;
     if (this.partyOn) {
       partyState = 0;
       this.partyOn = false;
+      
     } else {
       partyState = 1;
       this.partyOn = true;
@@ -101,4 +130,18 @@ export class DevicesComponent implements OnInit {
       }
     });
   }
+
+  // startParty() {
+  //   const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+  //   setInterval(() => {
+  //     if (this.partyOn) {
+  //       const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  //       this.partyColor = randomColor;
+  //     }
+  //   }, 1000);
+  // }
+
+  // stopParty() {
+  //   this.partyColor = 'transparent';
+  // }
 }

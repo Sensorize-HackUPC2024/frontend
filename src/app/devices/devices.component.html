@@ -1,11 +1,8 @@
 <div class="container">
   <div class="device-panel">
     <mat-card class="sensor-panel">
-      <mat-card-header>
-        <mat-card-title>Temperature</mat-card-title>
-      </mat-card-header>
       <mat-card-content>
-        <iframe src="http://172.20.10.5:7000/d-solo/adkoln1fgd0jka/class-monitoring?orgId=1&from=1714839262987&to=1714860862987&theme=light&panelId=1" width="260" height="200" frameborder="0"></iframe>      </mat-card-content>
+        <iframe src="http://172.20.10.5:7000/d-solo/adkoln1fgd0jka/class-monitoring?orgId=1&from=1714839262987&to=1714860862987&theme=light&kiosk=&embed=true&refresh=5s&panelId=1" width="240" height="200" frameborder="0"></iframe>      </mat-card-content>
     </mat-card>
     <mat-card class="action-panel">
       <div class="action-button heat" [ngClass]="{'active': heatOn}" (click)="onHeatClick()">
@@ -21,12 +18,8 @@
 
   <div class="device-panel">
     <mat-card class="sensor-panel">
-      <mat-card-header>
-        <mat-card-title>Lights</mat-card-title>
-      </mat-card-header>
       <mat-card-content>
-        <iframe src="http://172.20.10.5:7000/d-solo/adkoln1fgd0jka/new-dashboard?orgId=1&from=1714817788390&to=1714839388390&theme=light&panelId=1" width="260" height="200" frameborder="0"></iframe>
-      </mat-card-content>
+        <iframe src="http://172.20.10.5:7000/d-solo/adkoln1fgd0jka/class-monitoring?orgId=1&from=1714865578665&to=1714876378665&theme=light&kiosk=&embed=true&refresh=5s&panelId=12" width="240" height="200" frameborder="0"></iframe>      </mat-card-content>
     </mat-card>
     <mat-card class="action-panel">
       <div class="lights-button lights" [ngClass]="{'active': lightsOn}" (click)="onLightsClick()">
@@ -35,19 +28,31 @@
     </mat-card>
   </div>
 
+  <div class="device-panel special-panel">
+    <mat-card class="sensor-panel special-sensor-panel">
+      <mat-card-content>
+        <iframe class="special-iframe" src="http://172.20.10.5:7000/d-solo/adkoln1fgd0jka/class-monitoring?orgId=1&from=1714817788390&to=1714839388390&theme=light&kiosk=&embed=true&refresh=5s&panelId=10" frameborder="0"></iframe>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="action-panel special-action-panel">
+      <div class="lights-button acces" [ngClass]="{'active': accesOn}" (click)="onAccesClick()">
+        <mat-icon>key</mat-icon>
+      </div>
+    </mat-card>
+  </div>
+  
+  
+
   <div class="device-panel">
     <mat-card class="sensor-panel">
       <mat-card-header>
         <mat-card-title>Party mode</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <iframe src="http://172.20.10.5:7000/d-solo/adkoln1fgd0jka/new-dashboard?orgId=1&from=1714817788390&to=1714839388390&theme=light&panelId=1" width="260" height="200" frameborder="0"></iframe>
+        <div class="party-button party" [ngClass]="{'active': partyOn}" (click)="onPartyClick()">
+          <mat-icon>help_center</mat-icon>
+        </div>
       </mat-card-content>
-    </mat-card>
-    <mat-card class="action-panel">
-      <div class="lights-button party" [ngClass]="{'active': partyOn}" (click)="onPartyClick()">
-        <mat-icon>lightbulb</mat-icon>
-      </div>
     </mat-card>
   </div>
 </div>

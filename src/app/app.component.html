@@ -8,7 +8,6 @@
   <nav class="nav-links" [ngClass]="{ 'active': isMenuOpen }">
     <a (click)="navigate('/')" routerLinkActive="active-link">Dashboard</a>
     <a (click)="navigate('/devices')" routerLinkActive="active-link">Devices</a>
-    <a (click)="navigate('/profile')" routerLinkActive="active-link">Profile</a>
   </nav>
 </header>
 <router-outlet></router-outlet>
